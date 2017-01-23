@@ -6,10 +6,13 @@ import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, }
 import { Grid, Row } from 'react-native-easy-grid';
 import _ from 'lodash';
 import { openDrawer } from '../../actions/drawer';
+import { setExerciseIndex, setExerciseList } from '../../actions/list';
+
 import styles from './styles';
 
 const {
   popRoute,
+  pushRoute
 } = actions;
 
 class BlankPage extends Component {
@@ -17,8 +20,12 @@ class BlankPage extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
+    exerciseIndex: React.PropTypes.number,
     areas: React.PropTypes.arrayOf(React.PropTypes.object),
-    exercises: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.object)),
+    exerciseList: React.PropTypes.arrayOf(React.PropTypes.object),
+    exercises: React.PropTypes.arrayOf(React.PropTypes.object),
+    setExerciseIndex: React.PropTypes.func,
+    setExerciseList: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     popRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -29,27 +36,28 @@ class BlankPage extends Component {
   popRoute() {
     this.props.popRoute(this.props.navigation.key);
   }
+  pushRoute(route, index) {
+      this.props.setExerciseIndex(index);
+      this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
+  }
 
   render() {
+
     const {props: {name, index, areas}}= this;
       let exerciseNodes = _.values(this.props.exercises).map((itemArray) => {
-          console.log("itemArray:");
-          console.table(itemArray);
-              return itemArray.map((item, j ) => {
-                  if(item.key === index){
-
-                      console.log("blankpage double map: " +item.key + " value: " + item.value)
-
-                      return(
-                          <ListItem style={styles.row}>
-                            <Text style={styles.text}>{item.value}</Text>
-                          </ListItem>
-                      );
-                  }
-
+          if(itemArray.key === index){
+              this.props.setExerciseList(itemArray.value);
+              return itemArray.value.map((item, i ) => {
+                  return(
+                      <ListItem style={styles.row}
+                                button onPress ={()=> this.pushRoute('exercisePage', i)}
+                      >
+                          <Text style={styles.text}>{item.value}</Text>
+                      </ListItem>
+                  );
               })
+          }
       })
-
 
     return (
       <Container style={styles.container}>
@@ -78,8 +86,13 @@ class BlankPage extends Component {
 
 function bindAction(dispatch) {
   return {
+    setExerciseIndex: index => dispatch(setExerciseIndex(index)),
+    setExerciseList: exerciseList => dispatch(setExerciseList(exerciseList)),
     openDrawer: () => dispatch(openDrawer()),
     popRoute: key => dispatch(popRoute(key)),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
+
+
   };
 }
 
@@ -89,6 +102,8 @@ const mapStateToProps = state => ({
   index: state.list.selectedIndex,
   areas: state.list.bodyAreas,
   exercises: state.list.exercises,
+  exerciseList: state.list.exerciseList,
+
 });
 
 

@@ -17,12 +17,13 @@ let exerciseRef = null;
 export function syncFirebase(store) {
     let areas=[];
     let allExercises =[];
-    let counter = 0;
     bodyAreasRef.once("value", (dataSnapshot)=> {
 
         dataSnapshot.forEach(function (childShot) {
             let areaVal =  childShot.child("title").val();
             let areakey = childShot.key;
+            let exerciseKey = childShot.child("key").val();
+
             // console.log("firebase childshot key:")
             // console.log(childShot.key)
           //   childShot.forEach((function (babyShot) {
@@ -43,14 +44,12 @@ export function syncFirebase(store) {
           // //
           //   let exerciseVal = childShot.child("exercises").child("name").val();
           //   exercises.push(exerciseVal);
-            let numIndex = areas.length;
 
             areas.push({value:areaVal, key: areakey});
 
-            let exerciseSet = getExercises(areakey, numIndex);
-            allExercises.push(exerciseSet);
+            let exerciseSet = getExercises(areakey, exerciseKey);
+            allExercises.push({value: exerciseSet, key: exerciseKey});
         })
-        counter = counter+1;
         store.dispatch(setExercises(allExercises));
         store.dispatch(retrieveAreas(areas));
 
@@ -69,13 +68,12 @@ export function syncFirebase(store) {
 }
 function getExercises(bodyArea, index) {
     let exerciseObjs = [];
-    console.log("getExercise key: "+bodyArea);
+    console.log("getExercises for key index: "+ index);
 
     exerciseRef = firebaseApp.database().ref('bodyAreas/'+bodyArea+'/exercises' );
 
 
     exerciseRef.once("value", (dataSnapshot) => {
-        console.log("datasnapshot key: "+ dataSnapshot.key);
 
         dataSnapshot.forEach(function (childShot) {
             let actions =[];let commonErrors  = [];
@@ -83,10 +81,8 @@ function getExercises(bodyArea, index) {
             let exerciseVal = childShot.child("name").val();
             let exerciseType = childShot.child("type").val();
 
-            let exerciseKey = bodyArea;
             actions = childShot.child("action").val();
             purpose = childShot.child("purpose").val();
-            console.log("childShot name: "+ childShot.child("name").val()+ "childshot key: "+ index);
 
             exerciseObjs.push({value: exerciseVal, type: exerciseType, key:index });
 

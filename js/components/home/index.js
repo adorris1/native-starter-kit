@@ -21,8 +21,6 @@ class Home extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
-    exercises: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.object)),
-    getExercises: React.PropTypes.func,
     setIndex: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
@@ -89,7 +87,6 @@ function bindAction(dispatch) {
     setIndex: index => dispatch(setIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
-    getExercises: (areaIndex) => dispatch(getExercises(areaIndex)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
 
   };
@@ -99,7 +96,6 @@ const mapStateToProps = state => ({
   name: state.user.name,
   bodyAreas: state.list.bodyAreas,
   navigation: state.cardNavigation,
-    exercises: state.list.exercises,
 });
 
 export default connect(mapStateToProps, bindAction)(Home);

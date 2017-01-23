@@ -5,7 +5,8 @@ export const SET_INDEX = 'SET_INDEX';
 export const SET_AREA_KEY = 'SET_AREA_KEY';
 export const RETRIEVE_AREAS = 'RETRIEVE_AREAS';
 export const SET_EXERCISES = 'SET_EXERCISES';
-export const SET_EXERCISES_INDEX = 'SET_EXERCISES';
+export const SET_EXERCISE_INDEX = 'SET_EXERCISES';
+export const SET_EXERCISE_LIST = 'SET_EXERCISE_LIST';
 
 export function setIndex(index:number):Action {
   return {
@@ -35,7 +36,13 @@ export function setExercises(allExercises:string):Action {
 }
 export function setExerciseIndex(index:number):Action {
     return {
-        type: SET_INDEX,
+        type: SET_EXERCISE_INDEX,
         payload: index,
+    };
+}
+export function setExerciseList(selectedExercises:string):Action {
+    return {
+        type: SET_EXERCISE_LIST,
+        payload: selectedExercises,
     };
 }

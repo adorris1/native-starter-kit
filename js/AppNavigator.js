@@ -11,6 +11,8 @@ import Login from './components/login/';
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
 import SplashPage from './components/splashscreen/';
+import ExercisePage from './components/exercisePage/';
+
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
 
@@ -81,6 +83,8 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'exercisePage':
+        return <ExercisePage />;
       default :
         return <Login />;
     }

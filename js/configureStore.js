@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 import reducer from './reducers';
 import promise from './promise';
-import syncOffline from './syncOffline';
 import {syncFirebase} from './firebase';
 
 export default function configureStore(onCompletion:()=>void):any {

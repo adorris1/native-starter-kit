@@ -12,7 +12,8 @@ export type Action =
     | { type: 'LOAD_AREAS'}
     | { type: 'RETRIEVE_AREAS', bodyAreas: string}
     | { type: 'SET_EXERCISES', exercises: string }
-    | { type: 'SET_EXERCISES', exercises: string }
+    | { type: 'SET_EXERCISE_INDEX', index: number }
+    | { type: 'SET_EXERCISE_LIST', exercisesList: string }
 
 
 export type Dispatch = (action:Action | Array<Action>) => any;

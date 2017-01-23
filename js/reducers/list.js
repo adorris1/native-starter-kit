@@ -1,6 +1,13 @@
 
 import type { Action } from '../actions/types';
-import { SET_INDEX,RETRIEVE_AREAS, SET_EXERCISES } from '../actions/list';
+import {
+    SET_INDEX,
+    RETRIEVE_AREAS,
+    SET_EXERCISES,
+    SET_EXERCISE_INDEX,
+    SET_EXERCISE_LIST,
+
+} from '../actions/list';
 
 export type State = {
     bodyAreas: string,
@@ -30,6 +37,18 @@ export default function (state:State = initialState, action:Action): State {
         return {
             ...state,
             exercises: action.payload,
+        };
+    }
+    if (action.type === SET_EXERCISE_INDEX) {
+        return {
+            ...state,
+            selectedExerciseIndex: action.payload,
+        };
+    }
+    if (action.type === SET_EXERCISE_LIST) {
+        return {
+            ...state,
+            exerciseList: action.payload,
         };
     }
   return state;
