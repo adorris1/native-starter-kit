@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, Title, Content, Text, Button, Icon } from 'native-base';
-
+import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, } from 'native-base';
+import { Grid, Row } from 'react-native-easy-grid';
+import _ from 'lodash';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
@@ -16,7 +17,8 @@ class BlankPage extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    areas: React.PropTypes.arrayOf(React.PropTypes.object),
+    exercises: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.object)),
     openDrawer: React.PropTypes.func,
     popRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -29,7 +31,25 @@ class BlankPage extends Component {
   }
 
   render() {
-    const { props: { name, index, list } } = this;
+    const {props: {name, index, areas}}= this;
+      let exerciseNodes = _.values(this.props.exercises).map((itemArray) => {
+          console.log("itemArray:");
+          console.table(itemArray);
+              return itemArray.map((item, j ) => {
+                  if(item.key === index){
+
+                      console.log("blankpage double map: " +item.key + " value: " + item.value)
+
+                      return(
+                          <ListItem style={styles.row}>
+                            <Text style={styles.text}>{item.value}</Text>
+                          </ListItem>
+                      );
+                  }
+
+              })
+      })
+
 
     return (
       <Container style={styles.container}>
@@ -45,10 +65,11 @@ class BlankPage extends Component {
           </Button>
         </Header>
 
-        <Content padder>
-          <Text>
-            {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
-          </Text>
+        <Content>
+          <List style={styles.mt}>
+              {exerciseNodes}
+          </List>
+
         </Content>
       </Container>
     );
@@ -66,7 +87,8 @@ const mapStateToProps = state => ({
   navigation: state.cardNavigation,
   name: state.user.name,
   index: state.list.selectedIndex,
-  list: state.list.list,
+  areas: state.list.bodyAreas,
+  exercises: state.list.exercises,
 });
 
 

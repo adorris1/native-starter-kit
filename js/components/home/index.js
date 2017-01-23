@@ -7,7 +7,7 @@ import { Container, Header, Title, Content, Text, Button, Icon } from 'native-ba
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
-import { setIndex } from '../../actions/list';
+import { setIndex, getExercises } from '../../actions/list';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
 
@@ -20,7 +20,9 @@ class Home extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
+    exercises: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.object)),
+    getExercises: React.PropTypes.func,
     setIndex: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
@@ -31,8 +33,21 @@ class Home extends Component {
   }
 
   pushRoute(route, index) {
-    this.props.setIndex(index);
-    this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
+      this.props.setIndex(index);
+      this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
+
+      // console.log("index:" +index);
+    // let fun = _.values(this.props.exercises).map((itemArray, i) => {
+    //       return itemArray.map((item, j ) => {
+    //           if(item.key == index) {
+    //               console.log("home double map: " +item.key + " value: " + item.value)
+    //
+    //           }
+    //       })
+    // })
+      //        let selectedNodes = _.pullAt(itemArray, index);
+
+
   }
 
   render() {
@@ -52,13 +67,13 @@ class Home extends Component {
 
         <Content>
           <Grid style={styles.mt}>
-            {this.props.list.map((item, i) =>
+            {this.props.bodyAreas.map((item, i) =>
               <Row key={i}>
                 <TouchableOpacity
                   style={styles.row}
-                  onPress={() => this.pushRoute('blankPage', i)}
+                  onPress={() => this.pushRoute('blankPage', i) }
                 >
-                  <Text style={styles.text}>{item}</Text>
+                  <Text style={styles.text}>{item.value}</Text>
                 </TouchableOpacity>
               </Row>
             )}
@@ -74,14 +89,17 @@ function bindAction(dispatch) {
     setIndex: index => dispatch(setIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
+    getExercises: (areaIndex) => dispatch(getExercises(areaIndex)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+
   };
 }
 
 const mapStateToProps = state => ({
   name: state.user.name,
-  list: state.list.list,
+  bodyAreas: state.list.bodyAreas,
   navigation: state.cardNavigation,
+    exercises: state.list.exercises,
 });
 
 export default connect(mapStateToProps, bindAction)(Home);

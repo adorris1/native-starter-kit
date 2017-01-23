@@ -8,7 +8,12 @@ export type Action =
     | { type: 'OPEN_DRAWER'}
     | { type: 'CLOSE_DRAWER'}
     | { type: 'SET_USER', name: string}
-    | { type: 'SET_LIST', list: string}
+    | { type: 'SET_LIST', bodyAreas: string}
+    | { type: 'LOAD_AREAS'}
+    | { type: 'RETRIEVE_AREAS', bodyAreas: string}
+    | { type: 'SET_EXERCISES', exercises: string }
+    | { type: 'SET_EXERCISES', exercises: string }
+
 
 export type Dispatch = (action:Action | Array<Action>) => any;
 export type GetState = () => Object;

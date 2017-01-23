@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 import reducer from './reducers';
 import promise from './promise';
+import syncOffline from './syncOffline';
+import {syncFirebase} from './firebase';
 
 export default function configureStore(onCompletion:()=>void):any {
   const enhancer = compose(
@@ -16,7 +18,9 @@ export default function configureStore(onCompletion:()=>void):any {
   );
 
   const store = createStore(reducer, enhancer);
-  persistStore(store, { storage: AsyncStorage }, onCompletion);
+    syncFirebase(store);
+
+    persistStore(store, { storage: AsyncStorage }, onCompletion);
 
   return store;
 }
