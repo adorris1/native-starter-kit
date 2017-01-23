@@ -12,12 +12,14 @@ import {
 export type State = {
     bodyAreas: string,
     exercises: string
+    topics: string,
 }
 
 const initialState = {
   bodyAreas: [],
   exercises: [],
   selectedIndex: undefined,
+  topics: ["FAQ's", "Symptom Identifier","Injury Summaries","Exercises & Stretches"]
 };
 
 export default function (state:State = initialState, action:Action): State {

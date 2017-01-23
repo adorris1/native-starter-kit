@@ -9,7 +9,6 @@ export type Action =
     | { type: 'CLOSE_DRAWER'}
     | { type: 'SET_USER', name: string}
     | { type: 'SET_LIST', bodyAreas: string}
-    | { type: 'LOAD_AREAS'}
     | { type: 'RETRIEVE_AREAS', bodyAreas: string}
     | { type: 'SET_EXERCISES', exercises: string }
     | { type: 'SET_EXERCISE_INDEX', index: number }

@@ -54,21 +54,11 @@ export function syncFirebase(store) {
         store.dispatch(retrieveAreas(areas));
 
 
-        // dataSnapshot.forEach(function(childSnapShot) {
-        //     const id = Math.random().toString(36).substring(7)
-        //
-        //     let key = childSnapShot.key;
-        //     let childData = childSnapShot.val();
-        //     let title = childData.title;
-        //     let exercises = childData.exercises;
-        //     let time = new Date().getTime();
-        //     titleArray.push({id, title, time});
-        // })
+
     })
 }
 function getExercises(bodyArea, index) {
     let exerciseObjs = [];
-    console.log("getExercises for key index: "+ index);
 
     exerciseRef = firebaseApp.database().ref('bodyAreas/'+bodyArea+'/exercises' );
 

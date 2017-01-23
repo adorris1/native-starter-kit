@@ -34,18 +34,6 @@ class Home extends Component {
       this.props.setIndex(index);
       this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
 
-      // console.log("index:" +index);
-    // let fun = _.values(this.props.exercises).map((itemArray, i) => {
-    //       return itemArray.map((item, j ) => {
-    //           if(item.key == index) {
-    //               console.log("home double map: " +item.key + " value: " + item.value)
-    //
-    //           }
-    //       })
-    // })
-      //        let selectedNodes = _.pullAt(itemArray, index);
-
-
   }
 
   render() {
