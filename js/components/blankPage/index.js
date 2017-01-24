@@ -6,7 +6,9 @@ import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, }
 import { Grid, Row } from 'react-native-easy-grid';
 import _ from 'lodash';
 import { openDrawer } from '../../actions/drawer';
-import { setExerciseIndex, setExerciseList } from '../../actions/list';
+import { setAreaIndex, setExerciseList } from '../../actions/list';
+import { TouchableOpacity } from 'react-native';
+
 
 import styles from './styles';
 
@@ -20,12 +22,9 @@ class BlankPage extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
-    exerciseIndex: React.PropTypes.number,
-    areas: React.PropTypes.arrayOf(React.PropTypes.object),
-    exerciseList: React.PropTypes.arrayOf(React.PropTypes.object),
-    exercises: React.PropTypes.arrayOf(React.PropTypes.object),
-    setExerciseIndex: React.PropTypes.func,
-    setExerciseList: React.PropTypes.func,
+    bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
+    setAreaIndex: React.PropTypes.func,
+    pushRoute: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     popRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -37,27 +36,12 @@ class BlankPage extends Component {
     this.props.popRoute(this.props.navigation.key);
   }
   pushRoute(route, index) {
-      this.props.setExerciseIndex(index);
+    console.log("pushRoute in blankPage index: " + index + " route: " + route);
+      this.props.setAreaIndex(index);
       this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
   }
 
   render() {
-
-    const {props: {name, index, areas}}= this;
-      let exerciseNodes = _.values(this.props.exercises).map((itemArray) => {
-          if(itemArray.key === index){
-              this.props.setExerciseList(itemArray.value);
-              return itemArray.value.map((item, i ) => {
-                  return(
-                      <ListItem style={styles.row}
-                                button onPress ={()=> this.pushRoute('exercisePage', i)}
-                      >
-                          <Text style={styles.text}>{item.value}</Text>
-                      </ListItem>
-                  );
-              })
-          }
-      })
 
     return (
       <Container style={styles.container}>
@@ -66,19 +50,27 @@ class BlankPage extends Component {
             <Icon name="ios-arrow-back" />
           </Button>
 
-          <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
+          <Title>{(this.props.name) ? this.props.name : 'Blank Page'}</Title>
 
           <Button transparent onPress={this.props.openDrawer}>
             <Icon name="ios-menu" />
           </Button>
         </Header>
 
-        <Content>
-          <List style={styles.mt}>
-              {exerciseNodes}
-          </List>
-
-        </Content>
+          <Content>
+              <Grid style={styles.mt}>
+                  {this.props.bodyAreas.map((item, i) =>
+                      <Row key={i}>
+                          <TouchableOpacity
+                              style={styles.row}
+                              onPress={() => this.pushRoute('exerciseListPage', i) }
+                          >
+                              <Text style={styles.text}>{item.value}</Text>
+                          </TouchableOpacity>
+                      </Row>
+                  )}
+              </Grid>
+          </Content>
       </Container>
     );
   }
@@ -86,8 +78,7 @@ class BlankPage extends Component {
 
 function bindAction(dispatch) {
   return {
-    setExerciseIndex: index => dispatch(setExerciseIndex(index)),
-    setExerciseList: exerciseList => dispatch(setExerciseList(exerciseList)),
+    setAreaIndex: index => dispatch(setAreaIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
     popRoute: key => dispatch(popRoute(key)),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
@@ -100,9 +91,8 @@ const mapStateToProps = state => ({
   navigation: state.cardNavigation,
   name: state.user.name,
   index: state.list.selectedIndex,
-  areas: state.list.bodyAreas,
-  exercises: state.list.exercises,
-  exerciseList: state.list.exerciseList,
+  areaIndex: state.list.areaIndex,
+  bodyAreas: state.list.bodyAreas,
 
 });
 

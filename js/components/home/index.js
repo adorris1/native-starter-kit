@@ -20,7 +20,7 @@ class Home extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
+    topics: React.PropTypes.arrayOf(React.PropTypes.string),
     setIndex: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
@@ -53,13 +53,13 @@ class Home extends Component {
 
         <Content>
           <Grid style={styles.mt}>
-            {this.props.bodyAreas.map((item, i) =>
+            {this.props.topics.map((item, i) =>
               <Row key={i}>
                 <TouchableOpacity
                   style={styles.row}
                   onPress={() => this.pushRoute('blankPage', i) }
                 >
-                  <Text style={styles.text}>{item.value}</Text>
+                  <Text style={styles.text}>{item}</Text>
                 </TouchableOpacity>
               </Row>
             )}
@@ -82,8 +82,8 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   name: state.user.name,
-  bodyAreas: state.list.bodyAreas,
   navigation: state.cardNavigation,
+  topics: state.list.topics
 });
 
 export default connect(mapStateToProps, bindAction)(Home);

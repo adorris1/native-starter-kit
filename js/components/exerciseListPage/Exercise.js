@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, } from 'native-base';
 
-import styles from '../blankPage/styles';
+//import styles from '../blankPage/styles';
 
 class Exercise extends Component {
 

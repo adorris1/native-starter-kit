@@ -2,6 +2,7 @@
 import type { Action } from '../actions/types';
 import {
     SET_INDEX,
+    SET_AREA_INDEX,
     RETRIEVE_AREAS,
     SET_EXERCISES,
     SET_EXERCISE_INDEX,
@@ -11,7 +12,7 @@ import {
 
 export type State = {
     bodyAreas: string,
-    exercises: string
+    exercises: string,
     topics: string,
 }
 
@@ -35,6 +36,12 @@ export default function (state:State = initialState, action:Action): State {
           bodyAreas: action.payload,
       };
     }
+    if (action.type === SET_AREA_INDEX) {
+        return {
+            ...state,
+            areaIndex: action.payload,
+        };
+    }
     if (action.type === SET_EXERCISES) {
         return {
             ...state,
@@ -44,7 +51,7 @@ export default function (state:State = initialState, action:Action): State {
     if (action.type === SET_EXERCISE_INDEX) {
         return {
             ...state,
-            selectedExerciseIndex: action.payload,
+            exerciseIndex: action.payload,
         };
     }
     if (action.type === SET_EXERCISE_LIST) {

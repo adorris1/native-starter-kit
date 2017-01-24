@@ -11,6 +11,7 @@ import Login from './components/login/';
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
 import SplashPage from './components/splashscreen/';
+import ExerciseListPage from './components/exerciseListPage/';
 import ExercisePage from './components/exercisePage/';
 
 import SideBar from './components/sideBar';
@@ -83,8 +84,10 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'exerciseListPage':
+        return <ExerciseListPage />;
       case 'exercisePage':
-        return <ExercisePage />;
+          return <ExercisePage />;
       default :
         return <Login />;
     }

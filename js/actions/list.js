@@ -2,7 +2,7 @@
 import type { Action } from './types';
 
 export const SET_INDEX = 'SET_INDEX';
-export const SET_AREA_KEY = 'SET_AREA_KEY';
+export const SET_AREA_INDEX = 'SET_AREA_INDEX';
 export const RETRIEVE_AREAS = 'RETRIEVE_AREAS';
 export const SET_EXERCISES = 'SET_EXERCISES';
 export const SET_EXERCISE_INDEX = 'SET_EXERCISES';
@@ -21,12 +21,12 @@ export function retrieveAreas(areas:string):Action {
     };
 }
 
-// export function setAreaKey(areaKey:string):Action {
-//     return {
-//         type: SET_AREA_KEY,
-//         payload: areaKey
-//     };
-// }
+export function setAreaIndex(areaKey:string):Action {
+    return {
+        type: SET_AREA_INDEX,
+        payload: areaKey
+    };
+}
 
 export function setExercises(allExercises:string):Action {
     return {
