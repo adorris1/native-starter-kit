@@ -22,7 +22,6 @@ class ExerciseListPage extends Component {
         name: React.PropTypes.string,
         index: React.PropTypes.number,
         areaIndex: React.PropTypes.number,
-        exerciseList: React.PropTypes.arrayOf(React.PropTypes.object),
         exercises: React.PropTypes.arrayOf(React.PropTypes.object),
         areas: React.PropTypes.arrayOf(React.PropTypes.object),
         setExerciseIndex: React.PropTypes.func,
@@ -44,12 +43,10 @@ class ExerciseListPage extends Component {
 
     render() {
 
-        const {props: {name, areaIndex, areas}}= this;
+        const {props: {name, areaIndex, areas, exercises}}= this;
         let exerciseNodes = _.values(this.props.exercises).map((itemArray) => {
-            console.log("in exercise nodes. index is: " + areaIndex);
+
             if(itemArray.key === areaIndex){
-                console.log("itemArrayTable");
-                console.table(itemArray);
                 this.props.setExerciseList(itemArray.value);
                 return itemArray.value.map((item, i ) => {
                     return(
@@ -71,7 +68,8 @@ class ExerciseListPage extends Component {
                         <Icon name="ios-arrow-back" />
                     </Button>
 
-                    <Title>{(name) ? areas[index] : 'Exercise List Page'}</Title>
+                    <Title>
+                        {(!isNaN(areaIndex)) ? areas[areaIndex] : 'Exercise List Page'}</Title>
 
                     <Button transparent onPress={this.props.openDrawer}>
                         <Icon name="ios-menu" />
@@ -108,7 +106,6 @@ const mapStateToProps = state => ({
     areaIndex: state.list.areaIndex,
     areas: state.list.bodyAreas,
     exercises: state.list.exercises,
-    exerciseList: state.list.exerciseList,
 
 });
 

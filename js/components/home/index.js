@@ -1,15 +1,16 @@
 
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Image, Stylesheet } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon } from 'native-base';
-import { Grid, Row } from 'react-native-easy-grid';
+import { Grid, Row, Col } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
 import { setIndex, getExercises } from '../../actions/list';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
+const background = require('../../../images/runner.png');
 
 const {
   reset,
@@ -39,6 +40,7 @@ class Home extends Component {
   render() {
     return (
       <Container theme={myTheme} style={styles.container}>
+        <Image source={background} style={styles.backGroundImage}>
         <Header>
           <Button transparent onPress={() => this.props.reset(this.props.navigation.key)}>
             <Icon name="ios-power" />
@@ -50,7 +52,6 @@ class Home extends Component {
             <Icon name="ios-menu" />
           </Button>
         </Header>
-
         <Content>
           <Grid style={styles.mt}>
             {this.props.topics.map((item, i) =>
@@ -65,6 +66,8 @@ class Home extends Component {
             )}
           </Grid>
         </Content>
+        </Image>
+
       </Container>
     );
   }

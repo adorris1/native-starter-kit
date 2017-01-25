@@ -3,16 +3,20 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
+import { Container, Content, InputGroup, Input, Button, Icon, View,Text } from 'native-base';
 
 import { setUser } from '../../actions/user';
 import styles from './styles';
+import { inputColorPlaceholder } from '../../themes/base-theme';
 
 const {
   replaceAt,
 } = actions;
 
-const background = require('../../../images/shadow.png');
+// const background = require('../../../images/dorrisBlueWood.png');
+// const iconShoulders = require('../../../images/shoulderIcons.png');
+const spineIcon = require('../../../images/dorrisIconsNoLabel.png');
+const background = require('../../../images/umweahfy.png');
 
 class Login extends Component {
 
@@ -41,28 +45,40 @@ class Login extends Component {
   }
 
   render() {
+
+
+
     return (
       <Container>
+        <View>
+          <Image source={background} style={styles.backGroundImage}/>
+        </View>
         <View style={styles.container}>
           <Content>
-            <Image source={background} style={styles.shadow}>
               <View style={styles.bg}>
+
+                <Text style = {styles.appTitle}>
+                    {'INJURY GUIDE'}
+                </Text>
+                <Image source={spineIcon} style={styles.icon}/>
+
                 <InputGroup style={styles.input}>
-                  <Icon name="ios-person" />
-                  <Input placeholder="EMAIL" onChangeText={name => this.setState({ name })} />
+                  <Icon name="ios-person" style={styles.fontIcon} />
+                  <Input placeholder="EMAIL" placeholderTextColor="#D7D7D7" onChangeText={name => this.setState({ name })} />
                 </InputGroup>
                 <InputGroup style={styles.input}>
-                  <Icon name="ios-unlock-outline" />
+                  <Icon name="ios-unlock-outline" style={styles.fontIcon} />
                   <Input
-                    placeholder="PASSWORD"
-                    secureTextEntry
+                      placeholder="PASSWORD"
+                      secureTextEntry
+                      placeholderTextColor="#D7D7D7"
                   />
                 </InputGroup>
-                <Button style={styles.btn} onPress={() => this.replaceRoute('home')}>
+                <Button bordered style={styles.btn} textStyle={styles.btnText} onPress={() => this.replaceRoute('home')} >
                   Login
                 </Button>
               </View>
-            </Image>
+
           </Content>
         </View>
       </Container>

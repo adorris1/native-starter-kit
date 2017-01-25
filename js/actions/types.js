@@ -12,7 +12,7 @@ export type Action =
     | { type: 'RETRIEVE_AREAS', bodyAreas: string}
     | { type: 'SET_AREA_INDEX', bodyAreas: string}
     | { type: 'SET_EXERCISES', exercises: string }
-    | { type: 'SET_EXERCISE_INDEX', index: number }
+    | { type: 'SET_EXERCISE_INDEX', exerciseIndex: number }
     | { type: 'SET_EXERCISE_LIST', exercisesList: string }
 
 

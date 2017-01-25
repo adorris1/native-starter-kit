@@ -10,7 +10,7 @@ export default {
 
 
   // Button
-  btnFontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto_medium',
+  btnFontFamily: (Platform.OS === 'ios') ? 'Avenir-Light' : 'Roboto_medium',
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
 
@@ -88,7 +88,7 @@ export default {
 
 
   // Font
-  fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto',
+  fontFamily: (Platform.OS === 'ios') ? 'Avenir-Light' : 'Roboto',
   fontSizeBase: 15,
 
   get fontSizeH1() {
@@ -142,7 +142,7 @@ export default {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return '#575757';
+    return 'red';
   },
 
   inputGroupMarginBottom: 10,
@@ -165,7 +165,7 @@ export default {
 
   // List
   listBorderColor: '#ACAAAB',
-  // listBorderColor: '#ddd',
+  //listBorderColor: '#ddd',
   listDividerBg: '#ddd',
   listItemHeight: 45,
   listItemPadding: 9,
@@ -206,7 +206,7 @@ export default {
   // Title
   titleFontSize: (Platform.OS === 'ios') ? 17 : 19,
   subTitleFontSize: (Platform.OS === 'ios') ? 12 : 14,
-  subtitleColor: '#8e8e93',
+  subtitleColor: '#red',
 
 
   // Other

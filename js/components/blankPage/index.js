@@ -22,7 +22,8 @@ class BlankPage extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
-    bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
+
+      bodyAreas: React.PropTypes.arrayOf(React.PropTypes.object),
     setAreaIndex: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
@@ -91,7 +92,6 @@ const mapStateToProps = state => ({
   navigation: state.cardNavigation,
   name: state.user.name,
   index: state.list.selectedIndex,
-  areaIndex: state.list.areaIndex,
   bodyAreas: state.list.bodyAreas,
 
 });

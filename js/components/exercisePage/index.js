@@ -34,6 +34,7 @@ class BlankPage extends Component {
     render() {
         const { props: { name, exerciseIndex, exerciseList } } = this;
 
+
         return (
             <Container style={styles.container}>
                 <Header>
