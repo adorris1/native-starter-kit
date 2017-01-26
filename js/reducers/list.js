@@ -17,7 +17,7 @@ export type State = {
 }
 
 const initialState = {
-  bodyAreas: ["Head/Neck", "Shoulder/Chest", "Arms", "Core", "Back", "Hips", "Quadriceps", "Hamstrings", "Adductors", "Calf/Achilles",
+  bodyAreas: ["Head/Neck", "Shoulders/Chest", "Arms", "Back", "Core", "Hips", "Quadriceps", "Hamstrings", "Adductors", "Calf/Achilles",
   "Foot/Lower Leg", "Balance"],
   exercises: [],
   selectedIndex: undefined,

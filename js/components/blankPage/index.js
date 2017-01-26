@@ -2,13 +2,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, } from 'native-base';
+import { Container, Header, Title, Content, Text, Button, Icon,List, ListItem, View} from 'native-base';
 import _ from 'lodash';
 import { openDrawer } from '../../actions/drawer';
 import { setAreaIndex, setExerciseList } from '../../actions/list';
-import { TouchableOpacity } from 'react-native';
 import { Grid, Row, Col } from 'react-native-easy-grid';
+import { TouchableOpacity, Image, Stylesheet } from 'react-native';
 
+const background = require('../../../images/darkBlueGradiant.png');
+const bodySilhouette = require('../../../images/bodyImage.png');
 
 import styles from './styles';
 
@@ -43,118 +45,49 @@ class BlankPage extends Component {
   }
 
   render() {
-    const areas = [];
-    this.props.bodyAreas.map((item, i)=> {
-      areas[i]=item;
-    });
+
     return (
-      <Container style={styles.container}>
+      <Container>
         <Header>
           <Button transparent onPress={() => this.popRoute()}>
             <Icon name="ios-arrow-back" />
           </Button>
 
-          <Title>{(this.props.name) ? this.props.name : 'Blank Page'}</Title>
+          <Title>{(this.props.name) ? this.props.name : 'REHAB GUIDE'}</Title>
 
           <Button transparent onPress={this.props.openDrawer}>
             <Icon name="ios-menu" />
           </Button>
         </Header>
+        <View>
+          <Image source={background} style={styles.background}/>
 
+        </View>
+        <Image source={bodySilhouette} style={styles.bodyImg}/>
+
+        <View style={styles.tint}>
           <Content>
+
               <Grid style={styles.mt}>
-                <Col>
-                  <Row key={0}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 0) }>
-                      <Text style={styles.text}>{areas[0]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={1}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 1) }>
-                      <Text style={styles.text}>{areas[1]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={2}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 2) }>
-                      <Text style={styles.text}>{areas[2]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={3}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 3) }>
-                      <Text style={styles.text}>{areas[3]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row key={4}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 4) }>
-                      <Text style={styles.text}>{areas[4]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={5}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 5) }>
-                      <Text style={styles.text}>{areas[5]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={6}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 6) }>
-                      <Text style={styles.text}>{areas[6]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={7}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 7) }>
-                      <Text style={styles.text}>{areas[7]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row key={8}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 8) }>
-                      <Text style={styles.text}>{areas[8]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={9}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 9) }>
-                      <Text style={styles.text}>{areas[9]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={10}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 10) }>
-                      <Text style={styles.text}>{areas[10]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                  <Row key={11}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => this.pushRoute('exerciseListPage', 11) }>
-                      <Text style={styles.text}>{areas[11]}</Text>
-                    </TouchableOpacity>
-                  </Row>
-                </Col>
+                  {this.props.bodyAreas.map((item, i) =>
+                      <Row key={i} style={styles.row}>
+                        <Col>
+                          <TouchableOpacity
+                              onPress={() => this.pushRoute('exerciseListPage', i) }
+                          >
+                              <Text style={styles.text}>{item}</Text>
+                          </TouchableOpacity>
+                        </Col>
+                        <Col style={{width: 30}}>
+                          <Icon name="ios-arrow-forward" style={styles.chevronIcon}/>
+
+                        </Col>
+                      </Row>
+                  )}
               </Grid>
+
           </Content>
+        </View>
       </Container>
     );
   }

@@ -14,6 +14,7 @@ module.exports = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    backgroundColor: '#00000088',
   },
   backGroundImage: {
     flex: 1,
@@ -89,5 +90,9 @@ module.exports = StyleSheet.create({
     color: "#D7D7D7",
       alignItems: 'flex-end'
   },
+    bodyImg: {
+        alignSelf: 'center',
+        flex: 1,
+    }
 
 });

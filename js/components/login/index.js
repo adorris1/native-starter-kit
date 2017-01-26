@@ -15,7 +15,9 @@ const {
 // const background = require('../../../images/dorrisBlueWood.png');
 // const iconShoulders = require('../../../images/shoulderIcons.png');
 const spineIcon = require('../../../images/dorrisIconsNoLabel.png');
-const background = require('../../../images/darkBlueGradiant.png');
+//const background = require('../../../images/darkBlueGradiant.png');
+const background = require('../../../images/blueYogaMatt.png');
+//const bodySilhouette = require('../../../images/bodyImage.png');
 
 class Login extends Component {
 
@@ -52,6 +54,9 @@ class Login extends Component {
         <View>
           <Image source={background} style={styles.backGroundImage}/>
         </View>
+
+
+
         <View style={styles.container}>
           <Content>
               <View style={styles.bg}>
