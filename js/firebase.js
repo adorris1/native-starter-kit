@@ -51,7 +51,7 @@ export function syncFirebase(store) {
             allExercises.push({value: exerciseSet, key: exerciseKey});
         })
         store.dispatch(setExercises(allExercises));
-        store.dispatch(retrieveAreas(areas));
+       // store.dispatch(retrieveAreas(areas));
 
 
 

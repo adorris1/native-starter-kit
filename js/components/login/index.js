@@ -7,7 +7,6 @@ import { Container, Content, InputGroup, Input, Button, Icon, View,Text } from '
 
 import { setUser } from '../../actions/user';
 import styles from './styles';
-import { inputColorPlaceholder } from '../../themes/base-theme';
 
 const {
   replaceAt,
@@ -16,7 +15,7 @@ const {
 // const background = require('../../../images/dorrisBlueWood.png');
 // const iconShoulders = require('../../../images/shoulderIcons.png');
 const spineIcon = require('../../../images/dorrisIconsNoLabel.png');
-const background = require('../../../images/umweahfy.png');
+const background = require('../../../images/darkBlueGradiant.png');
 
 class Login extends Component {
 

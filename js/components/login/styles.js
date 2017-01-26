@@ -31,7 +31,7 @@ module.exports = StyleSheet.create({
       paddingRight: 40,
       marginLeft: 30,
       marginRight: 30,
-      marginBottom: deviceHeight/5.5,
+      marginBottom: deviceHeight/3.2,
 
 
   },
@@ -86,6 +86,8 @@ module.exports = StyleSheet.create({
       lineHeight: 20,
   },
   fontIcon: {
-    color: "#D7D7D7"
-  }
+    color: "#D7D7D7",
+      alignItems: 'flex-end'
+  },
+
 });

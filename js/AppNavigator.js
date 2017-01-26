@@ -13,6 +13,11 @@ import BlankPage from './components/blankPage';
 import SplashPage from './components/splashscreen/';
 import ExerciseListPage from './components/exerciseListPage/';
 import ExercisePage from './components/exercisePage/';
+import SymptomIdentifierPage from './components/symptomIdentifierPage/';
+import FaqPage from './components/faqPage/';
+import InjurySummaryPage from './components/injurySummaryPage/';
+
+
 
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -84,6 +89,12 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'injurySummaryPage':
+          return <InjurySummaryPage />;
+      case 'faqPage':
+          return <FaqPage />;
+      case 'symptomIdentifierPage':
+          return <SymptomIdentifierPage />;
       case 'exerciseListPage':
         return <ExerciseListPage />;
       case 'exercisePage':

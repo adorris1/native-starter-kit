@@ -14,12 +14,12 @@ export function setIndex(index:number):Action {
     payload: index,
   };
 }
-export function retrieveAreas(areas:string):Action {
-    return {
-        type: RETRIEVE_AREAS,
-        payload: areas,
-    };
-}
+// export function retrieveAreas(areas:string):Action {
+//     return {
+//         type: RETRIEVE_AREAS,
+//         payload: areas,
+//     };
+// }
 
 export function setAreaIndex(areaKey:string):Action {
     return {

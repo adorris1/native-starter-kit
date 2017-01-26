@@ -10,7 +10,7 @@ export default {
 
 
   // Button
-  btnFontFamily: (Platform.OS === 'ios') ? 'Avenir-Light' : 'Roboto_medium',
+  btnFontFamily: (Platform.OS === 'ios') ? 'Bangla Sangam MN' : 'Roboto_medium',
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
 
@@ -88,7 +88,7 @@ export default {
 
 
   // Font
-  fontFamily: (Platform.OS === 'ios') ? 'Avenir-Light' : 'Roboto',
+  fontFamily: (Platform.OS === 'ios') ? 'Bangla Sangam MN' : 'Roboto',
   fontSizeBase: 15,
 
   get fontSizeH1() {

@@ -17,7 +17,8 @@ export type State = {
 }
 
 const initialState = {
-  bodyAreas: [],
+  bodyAreas: ["Head/Neck", "Shoulder/Chest", "Arms", "Core", "Back", "Hips", "Quadriceps", "Hamstrings", "Adductors", "Calf/Achilles",
+  "Foot/Lower Leg", "Balance"],
   exercises: [],
   selectedIndex: undefined,
   topics: ["FAQ's", "Symptom Identifier","Injury Summaries","Exercises & Stretches"]
@@ -30,12 +31,12 @@ export default function (state:State = initialState, action:Action): State {
           selectedIndex: action.payload,
         };
     }
-    if (action.type === RETRIEVE_AREAS) {
-      return {
-          ...state,
-          bodyAreas: action.payload,
-      };
-    }
+    // if (action.type === RETRIEVE_AREAS) {
+    //   return {
+    //       ...state,
+    //       bodyAreas: action.payload,
+    //   };
+    // }
     if (action.type === SET_AREA_INDEX) {
         return {
             ...state,
