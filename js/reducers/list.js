@@ -7,6 +7,7 @@ import {
     SET_EXERCISES,
     SET_EXERCISE_INDEX,
     SET_EXERCISE_LIST,
+    SET_PREVIEW_AREA_TEXT
 
 } from '../actions/list';
 
@@ -14,6 +15,7 @@ export type State = {
     bodyAreas: string,
     exercises: string,
     topics: string,
+    previewAreaIndex: number
 }
 
 const initialState = {
@@ -21,7 +23,10 @@ const initialState = {
   "Foot/Lower Leg", "Balance"],
   exercises: [],
   selectedIndex: undefined,
-  topics: ["FAQ's", "Symptom Identifier","Injury Summaries","Exercises & Stretches"]
+  previewAreaIndex: undefined,
+
+    topics: ["FAQ's", "Symptom Identifier","Injury Summaries","Exercises & Stretches"],
+
 };
 
 export default function (state:State = initialState, action:Action): State {
@@ -49,16 +54,22 @@ export default function (state:State = initialState, action:Action): State {
             exercises: action.payload,
         };
     }
+    if (action.type === SET_EXERCISES) {
+        return {
+            ...state,
+            exercises: action.payload,
+        };
+    }
     if (action.type === SET_EXERCISE_INDEX) {
         return {
             ...state,
             exerciseIndex: action.payload,
         };
     }
-    if (action.type === SET_EXERCISE_LIST) {
+    if (action.type ===  SET_PREVIEW_AREA_TEXT) {
         return {
             ...state,
-            exerciseList: action.payload,
+            previewAreaIndex: action.payload,
         };
     }
   return state;

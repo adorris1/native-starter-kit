@@ -1,14 +1,18 @@
 
 const React = require('react-native');
+import _ from 'lodash';
 
 const { StyleSheet, Dimensions } = React;
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 const stealBlue = '#626E74';
+const lightGrey = '#D7D7D7';
+const lightTeal= '#2DA0C1';
+
 module.exports = StyleSheet.create({
   tint: {
       position: 'absolute',
-      top: 62,
+      top: 65,
       bottom: 0,
       left: 0,
       right: 0,
@@ -25,18 +29,27 @@ module.exports = StyleSheet.create({
 
   },
   row: {
-      flex: 1,
       alignItems: 'center',
-      height: 50,
-      backgroundColor: 'transparent',
-      borderBottomColor: stealBlue,
-      borderLeftColor: 'transparent',
-      borderRightColor: 'transparent',
-      borderTopColor: 'transparent',
+      height: 60,
+      borderColor: lightGrey,
       borderWidth: 1,
+      borderRadius: deviceWidth/2,
+      marginTop:2,
+      marginLeft: 20,
+      marginRight: 20
 
 
   },
+    selectedRow: {
+        alignItems: 'center',
+        height: 60,
+        borderColor: lightTeal,
+        borderWidth: 1,
+        borderRadius: deviceWidth/2,
+        marginTop:2,
+        marginLeft: 20,
+        marginRight: 20
+    },
 
   boxSize: {
       width: deviceWidth/3.4,
@@ -44,26 +57,124 @@ module.exports = StyleSheet.create({
   },
   text: {
       fontSize: 16,
-      marginTop: 10,
       textAlignVertical: 'center',
       alignSelf: 'center',
       marginLeft: 28,
 
-      color: 'white'
+      color: lightGrey,
   },
+    selectedText: {
+        fontSize: 16,
+        textAlignVertical: 'center',
+        alignSelf: 'center',
+        marginLeft: 28,
+
+        color: lightTeal,
+    },
   mt: {
-      // marginTop: 65,
+      marginTop: 65,
   },
   bodyImg: {
       flex: 1,
       alignSelf: 'center',
+      position:'relative'
 
   },
+    radioIcon: {
+        color: lightGrey,
+        height: 24,
+        width: 24,
+    },
+    selectedRadioIcon: {
+        color: lightTeal,
+        height: 24,
+        width: 24,
+    },
     chevronIcon: {
-        height: 22,
-        width: 22,
-        marginRight: 30,
-        color: '#626E74',
-        marginTop: 8,
+        height: 30,
+        width: 30,
+        marginRight: 40,
+        color: lightGrey,
+    },
+    selectedChevronIcon: {
+        height: 30,
+        width: 30,
+        marginRight: 40,
+        color: lightTeal,
+    },
+
+    headNeck: {
+        top: 60,
+        left: 150,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    shouldersChest: {
+        top: 100,
+        left: 230,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    arms: {
+        top: 200,
+        left: 90,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    back: {
+        top: 150,
+        left: 170,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    core: {
+        top: 220,
+        left: 170,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    hips: {
+        top: 280,
+        left: 120,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    quads: {
+        top: 334,
+        left: 200,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    hamstrings: {
+        top: 360,
+        left: 220,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    adductors: {
+        top: 354,
+        left: 160,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    calf: {
+        top: 454,
+        left: 120,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    lowerLegFoot: {
+        top: 500,
+        left: 220,
+        position: 'absolute',
+        backgroundColor: 'transparent'
+    },
+    balance: {
+        top: 554,
+        left: 104,
+        position: 'absolute',
+        backgroundColor: 'transparent'
     }
+
 });
+

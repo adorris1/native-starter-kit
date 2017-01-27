@@ -14,6 +14,9 @@ export type Action =
     | { type: 'SET_EXERCISES', exercises: string }
     | { type: 'SET_EXERCISE_INDEX', exerciseIndex: number }
     | { type: 'SET_EXERCISE_LIST', exercisesList: string }
+    | { type: 'SET_PREVIEW_AREA_TEXT', area: number }
+
+
 
 
 export type Dispatch = (action:Action | Array<Action>) => any;

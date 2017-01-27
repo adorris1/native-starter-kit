@@ -7,6 +7,8 @@ export const RETRIEVE_AREAS = 'RETRIEVE_AREAS';
 export const SET_EXERCISES = 'SET_EXERCISES';
 export const SET_EXERCISE_INDEX = 'SET_EXERCISES';
 export const SET_EXERCISE_LIST = 'SET_EXERCISE_LIST';
+export const SET_PREVIEW_AREA_TEXT = 'SET_PREVIEW_AREA_TEXT';
+
 
 export function setIndex(index:number):Action {
   return {
@@ -44,5 +46,11 @@ export function setExerciseList(selectedExercises:string):Action {
     return {
         type: SET_EXERCISE_LIST,
         payload: selectedExercises,
+    };
+}
+export function setPreviewAreaText(index:number):Action {
+    return {
+        type: SET_PREVIEW_AREA_TEXT,
+        payload: index,
     };
 }
