@@ -5,9 +5,9 @@ import _ from 'lodash';
 const { StyleSheet, Dimensions } = React;
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
-const stealBlue = '#626E74';
+const darkBlue = '#07316D';// color: '#07316D',
 const lightGrey = '#D7D7D7';
-const lightTeal= '#2DA0C1';
+const lightTeal= '#0083ac';
 
 module.exports = StyleSheet.create({
   tint: {
@@ -31,9 +31,13 @@ module.exports = StyleSheet.create({
   row: {
       alignItems: 'center',
       height: 60,
-      borderColor: lightGrey,
+      //borderColor: lightGrey,
       borderWidth: 1,
-      borderRadius: deviceWidth/2,
+      //borderRadius: deviceWidth/2,
+      borderBottomColor: lightGrey,
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
+      borderTopColor: 'transparent',
       marginTop:2,
       marginLeft: 20,
       marginRight: 20
@@ -46,12 +50,13 @@ module.exports = StyleSheet.create({
         borderColor: lightTeal,
         borderWidth: 1,
         borderRadius: deviceWidth/2,
+        backgroundColor: lightTeal,
         marginTop:2,
         marginLeft: 20,
         marginRight: 20
     },
 
-  boxSize: {
+  rowBackground: {
       width: deviceWidth/3.4,
       height: deviceWidth/3.4,
   },
@@ -59,7 +64,7 @@ module.exports = StyleSheet.create({
       fontSize: 16,
       textAlignVertical: 'center',
       alignSelf: 'center',
-      marginLeft: 28,
+      marginLeft: 60,
 
       color: lightGrey,
   },
@@ -67,9 +72,9 @@ module.exports = StyleSheet.create({
         fontSize: 16,
         textAlignVertical: 'center',
         alignSelf: 'center',
-        marginLeft: 28,
+        marginLeft: 30,
 
-        color: lightTeal,
+        color: lightGrey,
     },
   mt: {
       marginTop: 65,
@@ -99,8 +104,9 @@ module.exports = StyleSheet.create({
     selectedChevronIcon: {
         height: 30,
         width: 30,
-        marginRight: 40,
-        color: lightTeal,
+        marginRight: 44,
+        color: lightGrey,
+        backgroundColor: 'transparent'
     },
 
     headNeck: {

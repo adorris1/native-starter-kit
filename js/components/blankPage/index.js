@@ -39,25 +39,44 @@ class BlankPage extends Component {
     this.props.popRoute(this.props.navigation.key);
   }
   pushRoute(route, index) {
-    console.log("pushRoute in blankPage index: " + index + " route: " + route);
+    //console.log("pushRoute in blankPage index: " + index + " route: " + route);
       this.props.setAreaIndex(index);
       this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
   }
 
   _setPreviewAreaText(index){
+   // console.log("selected index in _setPreviewArea is: "+ index)
       this.props.setPreviewAreaText(index);
       this.setState({previewAreaIndex: index})
 
   }
 
+  _setIcon(index){
+
+      if(this.props.previewAreaIndex === index){
+          //console.log("index MATCH in _setIcon index is: "+index+ " previewAreaIndex: "+ this.props.previewAreaIndex)
+          return (
+            <Icon name="ios-radio-button-on" style={styles.selectedRadioIcon}/>
+            )
+      } else {
+         // console.log("Index NOT MATCH  in _setIcon index is: "+index+ " previewAreaIndex: "+ this.props.previewAreaIndex)
+
+          return (
+          <Icon name="ios-radio-button-off" style={styles.radioIcon}/>
+          )
+      }
+  }
+
   render() {
       const bodyAreas =[];
-      let rowCol;
+      let rowCol, radioIcon;
       this.props.bodyAreas.map((item, i) => {
           bodyAreas[i]=item;
       });
       if(this.props.previewAreaIndex > -1) {
+        //console.log("in render areas[7]: "+ bodyAreas[7])
         rowCol= (
+
             <Row style={styles.selectedRow}>
               <Col>
                 <TouchableOpacity
@@ -75,15 +94,12 @@ class BlankPage extends Component {
       } else {
          rowCol= (
               <Row style={styles.row}>
-                <Col>
-                    <Text style={styles.text}>{'Select a Body Area'}</Text>
-                </Col>
-                <Col style={{width: 30}}>
-                  <Icon name="ios-arrow-forward" style={styles.chevronIcon}/>
-                </Col>
+                    <Text style={styles.text}>{'Select Your Symptom Location'}</Text>
               </Row>
           );
       }
+
+
 
 
 
@@ -111,63 +127,53 @@ class BlankPage extends Component {
               <Button transparent
                   style={styles.headNeck}
                   onPress={() => this._setPreviewAreaText(0) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 0)? styles.selectedRadioIcon : styles.radioIcon} />
+                  {this._setIcon(0)}
               </Button>
             <Button transparent
               style={styles.shouldersChest}
               onPress={() => this._setPreviewAreaText(1) }>
-              <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 1)? styles.selectedRadioIcon : styles.radioIcon} />
-            </Button>
+                {this._setIcon(1)}
+                </Button>
             <Button transparent
                 style={styles.arms}
                 onPress={() => this._setPreviewAreaText(2) }>
-              <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 2)? styles.selectedRadioIcon : styles.radioIcon} />
-            </Button>
+                {this._setIcon(2)}            </Button>
             <Button transparent
                 style={styles.back}
                 onPress={() => this._setPreviewAreaText(3) }>
-              <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 3)? styles.selectedRadioIcon : styles.radioIcon} />
-            </Button>
+                {this._setIcon(3)}            </Button>
             <Button transparent
                     style={styles.core}
                     onPress={() => this._setPreviewAreaText(4) }>
-              <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 4)? styles.selectedRadioIcon : styles.radioIcon} />
-            </Button>
+                {this._setIcon(4)}            </Button>
               <Button transparent
                       style={styles.hips}
                       onPress={() => this._setPreviewAreaText(5) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 5)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(5)}              </Button>
               <Button transparent
                       style={styles.quads}
                       onPress={() => this._setPreviewAreaText(6) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 6)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(6)}              </Button>
               <Button transparent
                       style={styles.hamstrings}
                       onPress={() => this._setPreviewAreaText(7) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 7)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(7)}              </Button>
               <Button transparent
                       style={styles.adductors}
                       onPress={() => this._setPreviewAreaText(8) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 8)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(8)}              </Button>
               <Button transparent
                       style={styles.calf}
                       onPress={() => this._setPreviewAreaText(9) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 9)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(9)}              </Button>
               <Button transparent
                       style={styles.lowerLegFoot}
                       onPress={() => this._setPreviewAreaText(10) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 10)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(10)}              </Button>
               <Button transparent
                       style={styles.balance}
                       onPress={() => this._setPreviewAreaText(11) }>
-                <Icon name="ios-radio-outline" style={(this.props.previewAreaIndex === 11)? styles.selectedRadioIcon : styles.radioIcon} />
-              </Button>
+                  {this._setIcon(11)}              </Button>
             </Content>
           </View>
       </Container>

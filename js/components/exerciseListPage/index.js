@@ -23,7 +23,7 @@ class ExerciseListPage extends Component {
         index: React.PropTypes.number,
         areaIndex: React.PropTypes.number,
         exercises: React.PropTypes.arrayOf(React.PropTypes.object),
-        areas: React.PropTypes.arrayOf(React.PropTypes.object),
+        areas: React.PropTypes.arrayOf(React.PropTypes.string),
         setExerciseIndex: React.PropTypes.func,
         setExerciseList: React.PropTypes.func,
         openDrawer: React.PropTypes.func,
