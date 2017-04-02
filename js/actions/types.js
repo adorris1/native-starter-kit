@@ -10,10 +10,10 @@ export type Action =
     | { type: 'SET_USER', name: string}
     | { type: 'SET_LIST', topics: string}
     | { type: 'RETRIEVE_AREAS', bodyAreas: string}
-    | { type: 'SET_AREA_INDEX', bodyAreas: string}
+    //| { type: 'SET_AREA_INDEX', bodyAreas: string}
     | { type: 'SET_EXERCISES', exercises: string }
-    | { type: 'SET_EXERCISE_INDEX', exerciseIndex: number }
-    | { type: 'SET_EXERCISE_LIST', exercisesList: string }
+    //| { type: 'SET_EXERCISE_INDEX', exerciseIndex: number }
+    | { type: 'SET_EXERCISE_LIST', exerciseList: object }
     | { type: 'SET_PREVIEW_AREA_TEXT', area: number }
 
 
