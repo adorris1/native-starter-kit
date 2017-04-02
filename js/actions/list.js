@@ -3,9 +3,8 @@ import type { Action } from './types';
 
 export const SET_INDEX = 'SET_INDEX';
 export const SET_AREA_INDEX = 'SET_AREA_INDEX';
-export const RETRIEVE_AREAS = 'RETRIEVE_AREAS';
 export const SET_EXERCISES = 'SET_EXERCISES';
-export const SET_EXERCISE_INDEX = 'SET_EXERCISES';
+export const SET_EXERCISE_INDEX = 'SET_EXERCISE_INDEX';
 export const SET_EXERCISE_LIST = 'SET_EXERCISE_LIST';
 export const SET_PREVIEW_AREA_TEXT = 'SET_PREVIEW_AREA_TEXT';
 
@@ -16,12 +15,7 @@ export function setIndex(index:number):Action {
     payload: index,
   };
 }
-// export function retrieveAreas(areas:string):Action {
-//     return {
-//         type: RETRIEVE_AREAS,
-//         payload: areas,
-//     };
-// }
+
 
 export function setAreaIndex(areaKey:string):Action {
     return {
@@ -36,10 +30,10 @@ export function setExercises(allExercises:string):Action {
         payload: allExercises,
     };
 }
-export function setExerciseIndex(index:number):Action {
+export function setExerciseIndex(exerciseKey:number):Action {
     return {
         type: SET_EXERCISE_INDEX,
-        payload: index,
+        payload: exerciseKey,
     };
 }
 export function setExerciseList(selectedExercises:string):Action {

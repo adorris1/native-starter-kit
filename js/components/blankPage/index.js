@@ -99,18 +99,16 @@ class BlankPage extends Component {
           );
       }
 
-
-
-
-
       return (
       <Container>
         <Header>
           <Button transparent onPress={() => this.popRoute()}>
             <Icon name="ios-arrow-back" />
           </Button>
-          <Title>{(this.props.name) ? this.props.name : 'REHAB GUIDE'}</Title>
-          <Button transparent onPress={this.props.openDrawer}>
+          {/*<Title>{(this.props.name) ? this.props.name : 'REHAB GUIDE'}</Title>*/}
+            <Title>{'REHAB GUIDE'}</Title>
+
+            <Button transparent onPress={this.props.openDrawer}>
             <Icon name="ios-menu" />
           </Button>
         </Header>
@@ -195,7 +193,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
-  name: state.user.name,
   index: state.list.selectedIndex,
   bodyAreas: state.list.bodyAreas,
   previewAreaIndex: state.list.previewAreaIndex
